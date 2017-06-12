@@ -12,7 +12,7 @@ public class ImageCaptchaBuilderTest {
     
     @Test
     public void buildImageTest(){
-        captchaBuilder.generate("Jeremy1203");
+        captchaBuilder.withFontSize(55).withCurve().withCurveColor(255, 0, 102).generate("Jeremy1203");
     }
     
 }
