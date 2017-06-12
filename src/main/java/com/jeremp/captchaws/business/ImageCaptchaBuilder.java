@@ -1,12 +1,14 @@
 package com.jeremp.captchaws.business;
 
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Line2D;
+import java.awt.geom.QuadCurve2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.BufferedImageOp;
 import java.awt.image.ConvolveOp;
@@ -46,17 +48,29 @@ private static final Logger LOG = LoggerFactory.getLogger(ImageCaptchaBuilder.cl
         g2d.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
         g2d.setFont(font);
         fm = g2d.getFontMetrics();
-        g2d.setColor(Color.BLUE);
-        g2d.draw(new Line2D.Double(0, 0, width, height));
-        g2d.setColor(Color.BLACK.BLACK);
+        g2d.setColor(Color.BLACK);
+        
+        // ligne oblique
+        //g2d.draw(new Line2D.Double(0, 0, width, height));
+        //g2d.setColor(Color.BLACK.BLACK);
+        
         g2d.drawString(phrase, 0, fm.getAscent());
+        
+    
+        
+                        
+// draw QuadCurve2D.Float with set coordinates
+QuadCurve2D q = new QuadCurve2D.Float();
+q.setCurve(0, 0, 30, 60, width, 10);
+g2d.setStroke(new BasicStroke(3));
+g2d.draw(q);
+        
         g2d.dispose();
         
         // emboss
         //img = embossImage(img);
         
-        // apply blur
-        img = blurImage(img, 0.99f);
+        
         
         
         

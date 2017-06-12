@@ -12,7 +12,7 @@ public class ImageCaptchaBuilderTest {
     
     @Test
     public void buildImageTest(){
-        captchaBuilder.generate("Jeremy");
+        captchaBuilder.generate("Jeremy1203");
     }
     
 }
